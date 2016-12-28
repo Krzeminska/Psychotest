@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -23,7 +26,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  */
 public class PsychoMain extends javax.swing.JFrame {
 
-    PsychoProfile Odp;
+    public PsychoProfile Odp;
     /**
      * Creates new form PsychoMain
      */
@@ -43,7 +46,7 @@ public class PsychoMain extends javax.swing.JFrame {
         Question = new javax.swing.JInternalFrame();
         p3 = new javax.swing.JPanel();
         question = new javax.swing.JLabel();
-        jSlider2 = new javax.swing.JSlider();
+        slider = new javax.swing.JSlider();
         next = new javax.swing.JButton();
         counter = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -62,6 +65,11 @@ public class PsychoMain extends javax.swing.JFrame {
         question.setText("Treść pytania.");
 
         next.setText("Next");
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
 
         counter.setText("0");
 
@@ -78,7 +86,7 @@ public class PsychoMain extends javax.swing.JFrame {
                 .addGroup(p3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(next)
                     .addGroup(p3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(question))
                     .addGroup(p3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -99,7 +107,7 @@ public class PsychoMain extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(question)
                 .addGap(41, 41, 41)
-                .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(next)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -189,8 +197,20 @@ public class PsychoMain extends javax.swing.JFrame {
             Dialog dlg = new Dialog(this, "Zwrot", "message", Question, next);
             counter.setText(Integer.toString(i));
         }
+        Odp.print();
 
     }//GEN-LAST:event_startActionPerformed
+
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+        float x = (float) slider.getValue();
+        System.out.println(x);
+        Odp.setFT(x);
+        try {
+              Question.setClosed(true);
+            } catch (PropertyVetoException ex) {
+                System.err.println("Closing Exception");
+            }
+    }//GEN-LAST:event_nextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,11 +275,11 @@ public class PsychoMain extends javax.swing.JFrame {
     private javax.swing.JLabel description;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSlider jSlider2;
     private javax.swing.JButton next;
     private javax.swing.JPanel p;
     private javax.swing.JPanel p3;
     private javax.swing.JLabel question;
+    private javax.swing.JSlider slider;
     private javax.swing.JButton start;
     private javax.swing.JLabel suggestion;
     private javax.swing.JLabel title;

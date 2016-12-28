@@ -40,7 +40,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="next" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="jSlider2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="slider" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="question" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -67,7 +67,7 @@
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="question" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Component id="jSlider2" min="-2" max="-2" attributes="0"/>
+                      <Component id="slider" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="next" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="22" max="32767" attributes="0"/>
@@ -81,12 +81,15 @@
                 <Property name="text" type="java.lang.String" value="Tre&#x15b;&#x107; pytania."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSlider" name="jSlider2">
+            <Component class="javax.swing.JSlider" name="slider">
             </Component>
             <Component class="javax.swing.JButton" name="next">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Next"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="counter">
               <Properties>
